@@ -3,8 +3,8 @@
 $db = new PDO('mysql:host=localhost;dbname=posts', 'root');
 
 $limit_on_page = 3;
+$get_page = 0;
 if ( isset($_GET['page']) ) { $get_page = $_GET['page'] * $limit_on_page; }
-else { $get_page = 0; }
 
 $take_all_from_db = $db->query("SELECT * FROM post LIMIT {$get_page}, {$limit_on_page}")->fetchAll(PDO::FETCH_ASSOC);
 
